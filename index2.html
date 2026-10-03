@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shruti & Shivam</title>
+
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   PAGE
+================================ */
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(117, 65, 86, 0.35),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #120c12,
+            #21131c,
+            #100b10
+        );
+
+    color: #f8edf2;
+
+    font-family:
+        "Georgia",
+        "Times New Roman",
+        serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ================================
+   FLOATING HEARTS
+================================ */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    font-size: 18px;
+
+    opacity: 0;
+
+    animation:
+        floatHeart linear infinite;
+}
+
+.heart:nth-child(1) {
+    left: 8%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(2) {
+    left: 22%;
+    animation-duration: 15s;
+    animation-delay: 4s;
+}
+
+.heart:nth-child(3) {
+    left: 40%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(4) {
+    left: 63%;
+    animation-duration: 16s;
+    animation-delay: 6s;
+}
+
+.heart:nth-child(5) {
+    left: 82%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(0.7)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.18;
+    }
+
+    70% {
+        opacity: 0.12;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            scale(1.2)
+            rotate(20deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.page {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+}
+
+
+.content {
+    width: 100%;
+    max-width: 900px;
+
+    text-align: center;
+}
+
+
+/* ================================
+   TOP
+================================ */
+
+.small-heart {
+    font-size: 24px;
+
+    margin-bottom: 25px;
+
+    opacity: 0.8;
+}
+
+.names {
+    font-size:
+        clamp(38px, 8vw, 72px);
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 14px;
+}
+
+.names span {
+    opacity: 0.55;
+}
+
+.intro {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.5;
+}
+
+
+/* ================================
+   PHOTO
+================================ */
+
+/*
+   OPTIONAL PHOTO
+
+   Put your photo in the same folder
+   and name it:
+
+   couple.jpg
+
+   Then remove the "display: none"
+   from .photo
+*/
+
+.photo {
+    display: none;
+
+    width: 170px;
+    height: 170px;
+
+    margin: 45px auto 35px;
+
+    border-radius: 50%;
+
+    background-image:
+        url("couple.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.4);
+}
+
+
+/* ================================
+   COUNTER SECTION
+================================ */
+
+.counter-section {
+    margin-top: 65px;
+}
+
+.counter-heading {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.45;
+
+    margin-bottom: 25px;
+}
+
+
+/* ================================
+   MAIN TIMER
+================================ */
+
+.timer-card {
+
+    padding:
+        35px
+        20px
+        32px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.35);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+}
+
+
+.main-timer {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+.unit {
+
+    min-width: 125px;
+
+    padding: 12px 10px;
+}
+
+
+.number {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(45px, 8vw, 75px);
+
+    font-weight: 200;
+
+    letter-spacing: -3px;
+
+    line-height: 1;
+}
+
+
+.label {
+
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: 0.42;
+}
+
+
+/* ================================
+   SMALL TIMER
+================================ */
+
+.small-timer {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+}
+
+
+.small-unit {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 7px;
+}
+
+
+.small-number {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 300;
+}
+
+
+.small-label {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0.4;
+}
+
+
+/* ================================
+   MESSAGE
+================================ */
+
+.divider {
+
+    width: 55px;
+
+    height: 1px;
+
+    margin:
+        55px
+        auto
+        30px;
+
+    background:
+        rgba(255,255,255,0.25);
+}
+
+
+.message {
+
+    font-size:
+        clamp(19px, 4vw, 27px);
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    opacity: 0.85;
+}
+
+
+.message strong {
+
+    font-weight: normal;
+
+    opacity: 1;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.since {
+
+    margin-top: 28px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: 0.28;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding:
+            40px
+            15px;
+    }
+
+    .counter-section {
+        margin-top: 50px;
+    }
+
+    .timer-card {
+        padding:
+            30px
+            10px;
+    }
+
+    .main-timer {
+        gap: 0;
+    }
+
+    .unit {
+        min-width: 95px;
+    }
+
+    .small-timer {
+        gap: 20px;
+    }
+
+    .small-number {
+        font-size: 19px;
+    }
+
+    .small-label {
+        font-size: 7px;
+    }
+
+}
+
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 380px) {
+
+    .unit {
+        min-width: 85px;
+    }
+
+    .number {
+        font-size: 40px;
+    }
+
+    .small-timer {
+        gap: 12px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     FLOATING HEARTS
+================================ -->
+
+<div class="hearts">
+
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+    <div class="heart">♡</div>
+
+</div>
+
+
+<!-- ================================
+     MAIN
+================================ -->
+
+<div class="page">
+
+<div class="content">
+
+
+    <div class="small-heart">
+        ♡
+    </div>
+
+
+    <div class="names">
+        Shruti <span>&</span> Shivam
+    </div>
+
+
+    <div class="intro">
+        Our story began here
+    </div>
+
+
+    <!-- OPTIONAL PHOTO -->
+
+    <div class="photo"></div>
+
+
+    <!-- ============================
+         TIMER
+    ============================= -->
+
+    <div class="counter-section">
+
+        <div class="counter-heading">
+            We've been us for
+        </div>
+
+
+        <div class="timer-card">
+
+
+            <div class="main-timer">
+
+
+                <div class="unit">
+
+                    <div
+                        class="number"
+                        id="years">
+                        0
+                    </div>
+
+                    <div class="label">
+                        Years
+                    </div>
+
+                </div>
+
+
+                <div class="unit">
+
+                    <div
+                        class="number"
+                        id="months">
+                        0
+                    </div>
+
+                    <div class="label">
+                        Months
+                    </div>
+
+                </div>
+
+
+                <div class="unit">
+
+                    <div
+                        class="number"
+                        id="days">
+                        0
+                    </div>
+
+                    <div class="label">
+                        Days
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="small-timer">
+
+
+                <div class="small-unit">
+
+                    <div
+                        class="small-number"
+                        id="hours">
+                        00
+                    </div>
+
+                    <div class="small-label">
+                        Hours
+                    </div>
+
+                </div>
+
+
+                <div class="small-unit">
+
+                    <div
+                        class="small-number"
+                        id="minutes">
+                        00
+                    </div>
+
+                    <div class="small-label">
+                        Minutes
+                    </div>
+
+                </div>
+
+
+                <div class="small-unit">
+
+                    <div
+                        class="small-number"
+                        id="seconds">
+                        00
+                    </div>
+
+                    <div class="small-label">
+                        Seconds
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================
+             MESSAGE
+        ========================= -->
+
+        <div class="divider"></div>
+
+
+        <div class="message">
+
+            Every second since
+            <strong>10 October 2024</strong>
+            has been a part of our story.
+
+            <br><br>
+
+            And we're still counting.
+
+        </div>
+
+
+        <div class="since">
+
+            10 October 2024 · 10:30 AM · IST
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================================
+     JAVASCRIPT
+================================ -->
+
+<script>
+
+
+/*
+=================================================
+THE DAY WE MET
+=================================================
+
+10 October 2024
+10:30 AM
+India Standard Time
+
+If your actual time was 10:30 PM,
+change 10:30 to 22:30.
+
+=================================================
+*/
+
+const startDate =
+    new Date(
+        "2024-10-10T10:30:00+05:30"
+    );
+
+
+/*
+=================================================
+UPDATE TIMER
+=================================================
+*/
+
+function updateCounter() {
+
+    const now = new Date();
+
+
+    /*
+    ---------------------------------------------
+    Calculate complete years
+    ---------------------------------------------
+    */
+
+    let years =
+        now.getFullYear()
+        -
+        startDate.getFullYear();
+
+
+    let afterYears =
+        new Date(startDate);
+
+
+    afterYears.setFullYear(
+        startDate.getFullYear()
+        +
+        years
+    );
+
+
+    if (afterYears > now) {
+
+        years--;
+
+        afterYears =
+            new Date(startDate);
+
+        afterYears.setFullYear(
+            startDate.getFullYear()
+            +
+            years
+        );
+    }
+
+
+    /*
+    ---------------------------------------------
+    Calculate complete months
+    ---------------------------------------------
+    */
+
+    let months =
+        (
+            now.getFullYear()
+            -
+            afterYears.getFullYear()
+        )
+        *
+        12
+        +
+        (
+            now.getMonth()
+            -
+            afterYears.getMonth()
+        );
+
+
+    let afterMonths =
+        new Date(afterYears);
+
+
+    afterMonths.setMonth(
+        afterYears.getMonth()
+        +
+        months
+    );
+
+
+    if (afterMonths > now) {
+
+        months--;
+
+        afterMonths =
+            new Date(afterYears);
+
+        afterMonths.setMonth(
+            afterYears.getMonth()
+            +
+            months
+        );
+    }
+
+
+    /*
+    ---------------------------------------------
+    Calculate remaining days/hours/etc.
+    ---------------------------------------------
+    */
+
+    let remaining =
+        now.getTime()
+        -
+        afterMonths.getTime();
+
+
+    const SECOND = 1000;
+
+    const MINUTE =
+        SECOND * 60;
+
+    const HOUR =
+        MINUTE * 60;
+
+    const DAY =
+        HOUR * 24;
+
+
+    const days =
+        Math.floor(
+            remaining / DAY
+        );
+
+
+    remaining %= DAY;
+
+
+    const hours =
+        Math.floor(
+            remaining / HOUR
+        );
+
+
+    remaining %= HOUR;
+
+
+    const minutes =
+        Math.floor(
+            remaining / MINUTE
+        );
+
+
+    remaining %= MINUTE;
+
+
+    const seconds =
+        Math.floor(
+            remaining / SECOND
+        );
+
+
+    /*
+    ---------------------------------------------
+    Put values on screen
+    ---------------------------------------------
+    */
+
+    document.getElementById("years")
+        .textContent = years;
+
+
+    document.getElementById("months")
+        .textContent = months;
+
+
+    document.getElementById("days")
+        .textContent = days;
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours)
+        .padStart(2, "0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes)
+        .padStart(2, "0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds)
+        .padStart(2, "0");
+
+}
+
+
+/*
+=================================================
+START
+=================================================
+*/
+
+updateCounter();
+
+
+/*
+=================================================
+KEEP COUNTING
+=================================================
+*/
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+
+</script>
+
+</body>
+</html>
